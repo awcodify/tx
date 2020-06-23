@@ -27,7 +27,7 @@ func NewTx(db *sql.DB) Tx {
 // Wrap the transaction.
 func (tx Tx) Wrap(fn func(t Transaction) error) (err error) {
 	// Starts the transaction
-	t, err := db.Begin()
+	t, err := tx.db.Begin()
 	if err != nil {
 		return
 	}
